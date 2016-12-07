@@ -48,7 +48,8 @@ public class AgendaLayout extends HorizontalLayout {
 		FieldGroup fieldGroup = new FieldGroup(new BeanItem<>(client));
 		fieldGroup.setBuffered(false);
 		fieldGroup.bindMemberFields(this);
-		addComponents(deleted, firstName, lastName, email, city, phoneNumber, zipCode, street);
+
+		addComponents(firstName, lastName, email, city, phoneNumber, zipCode, street);
 		setExpandRatio(firstName, 1);
 
 		Arrays.asList(deleted, firstName, lastName, email, city, phoneNumber, zipCode, street).forEach(field -> {
