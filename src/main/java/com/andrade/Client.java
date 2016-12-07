@@ -32,7 +32,7 @@ public class Client {
 	@NotNull
 	private boolean deleted;
 
-	public Client(String firstName, String city, String phoneNumber, String email) {
+	public Client(String firstName, String email, String city, String phoneNumber) {
 		super();
 		this.firstName = firstName;
 		this.city = city;

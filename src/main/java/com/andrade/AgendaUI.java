@@ -30,6 +30,8 @@ public class AgendaUI extends UI {
 	private FormLayout form;
 	Window dialog = new Window("New Contact");
 
+	Button addButton = new Button("Add Contact");
+
 	@Autowired
 	ClientList clientList;
 
@@ -38,8 +40,8 @@ public class AgendaUI extends UI {
 		setupLayout();
 		addHeader();
 		addForm();
-		addClientList();
 		addActionButtons();
+		addClientList();
 	}
 
 	private void setupLayout() {
@@ -61,8 +63,6 @@ public class AgendaUI extends UI {
 		HorizontalLayout horizontal = new HorizontalLayout();
 		horizontal.setWidth("100%");
 		horizontal.setHeight("100%");
-
-		form.setCaption("Add new contact");
 
 		TextField name = new TextField("Name");
 		name.setRequired(true);
@@ -95,18 +95,16 @@ public class AgendaUI extends UI {
 
 		name.focus();
 
-		Button addButton = new Button("");
 		addButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 		addButton.setIcon(FontAwesome.PLUS);
 
 		addButton.addClickListener(click -> {
 			clientList
-					.addClient(new Client(email.getValue(), city.getValue(), phoneNumber.getValue(), email.getValue()));
+					.addClient(new Client(name.getValue(), email.getValue(), city.getValue(), phoneNumber.getValue()));
+			name.setValue("");
 			email.setValue("");
 			city.setValue("");
 			phoneNumber.setValue("");
-			email.setValue("");
-			email.focus();
 		});
 		addButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 	}
@@ -119,11 +117,9 @@ public class AgendaUI extends UI {
 		HorizontalLayout horizontal = new HorizontalLayout();
 		horizontal.setSpacing(true);
 
-		Button addButton = new Button("Add Contact");
 		Button cancelButton = new Button("Cancel");
 		Button deleteButton = new Button("Delete");
 
-		// addButton.addClickListener(click -> clientList.addClient(client));
 		deleteButton.addClickListener(click -> clientList.deleteCompleted());
 
 		horizontal.addComponents(addButton, cancelButton, deleteButton);
