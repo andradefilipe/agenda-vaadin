@@ -15,7 +15,6 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 @SpringUI
@@ -28,9 +27,9 @@ public class AgendaUI extends UI {
 	private static final long serialVersionUID = 1L;
 
 	private FormLayout form;
-	Window dialog = new Window("New Contact");
 
 	Button addButton = new Button("Add Contact");
+	Button cancelButton = new Button("Cancel");
 
 	@Autowired
 	ClientList clientList;
@@ -101,12 +100,19 @@ public class AgendaUI extends UI {
 		addButton.addClickListener(click -> {
 			clientList
 					.addClient(new Client(name.getValue(), email.getValue(), city.getValue(), phoneNumber.getValue()));
-			name.setValue("");
-			email.setValue("");
-			city.setValue("");
-			phoneNumber.setValue("");
+			cleanAllFields(name, email, phoneNumber, city);
+		});
+		cancelButton.addClickListener(click -> {
+			cleanAllFields(name, email, phoneNumber, city);
 		});
 		addButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
+	}
+
+	public void cleanAllFields(TextField name, TextField email, TextField phoneNumber, TextField city) {
+		name.setValue("");
+		email.setValue("");
+		city.setValue("");
+		phoneNumber.setValue("");
 	}
 
 	private void addClientList() {
@@ -117,7 +123,6 @@ public class AgendaUI extends UI {
 		HorizontalLayout horizontal = new HorizontalLayout();
 		horizontal.setSpacing(true);
 
-		Button cancelButton = new Button("Cancel");
 		Button deleteButton = new Button("Delete");
 
 		deleteButton.addClickListener(click -> clientList.deleteCompleted());
