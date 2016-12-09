@@ -25,11 +25,7 @@ public class AgendaUI extends UI {
 
 	private FormLayout form;
 
-	Button openbutton; // Button for opening the window
-	Button closebutton; // A button in the window
-
 	Button addButton = new Button("Add Contact");
-	Button cancelButton = new Button("Cancel");
 
 	@Autowired
 	ContactList contactList;
