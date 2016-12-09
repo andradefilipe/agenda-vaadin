@@ -24,8 +24,8 @@ class ContactList extends VerticalLayout implements ClientChangeListener {
 
 	@PostConstruct
 	void init() {
-		setWidth("80%");
-		setSpacing(true);
+		// setWidth("100%");
+		// setSpacing(true);
 
 		update();
 	}

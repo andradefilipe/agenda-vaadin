@@ -22,21 +22,22 @@ public class AgendaLayout extends HorizontalLayout {
 	private final TextField phoneNumber;
 
 	public AgendaLayout(Client client, ClientChangeListener changeListener) {
-		setWidth("100%");
-		setSpacing(true);
+		setWidthUndefined();
+
 		setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
 		deleted = new CheckBox();
 
 		firstName = new TextField();
-		firstName.setWidth("30%");
+		firstName.setWidth("300px");
 		firstName.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
 
 		email = new TextField();
-		email.setWidth("200px");
+		email.setWidth("300px");
 		email.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
 
 		city = new TextField();
+		city.setWidth("200px");
 		city.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
 
 		phoneNumber = new TextField();
@@ -47,7 +48,10 @@ public class AgendaLayout extends HorizontalLayout {
 		fieldGroup.bindMemberFields(this);
 
 		addComponents(deleted, firstName, email, city, phoneNumber);
-		setExpandRatio(firstName, 1);
+		// setExpandRatio(firstName, 1);
+		// setExpandRatio(email, 1);
+		// setExpandRatio(city, 1);
+		// setExpandRatio(phoneNumber, 1);
 
 		Arrays.asList(deleted, firstName, email, city, phoneNumber).forEach(field -> {
 			field.addValueChangeListener(change -> changeListener.clientChanged(client));

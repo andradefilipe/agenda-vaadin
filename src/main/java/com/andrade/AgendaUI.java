@@ -48,7 +48,7 @@ public class AgendaUI extends UI {
 	private void addHeader() {
 		Label header = new Label("AGENDA");
 		header.addStyleName(ValoTheme.LABEL_H1);
-		header.setSizeUndefined();
+		// header.setSizeUndefined();
 		form.addComponent(header);
 
 	}
@@ -66,7 +66,6 @@ public class AgendaUI extends UI {
 
 		addButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
 		addButton.setIcon(FontAwesome.PLUS);
-
 		addButton.addClickListener(click -> {
 			ContactForm sub = new ContactForm(contactList);
 			UI.getCurrent().addWindow(sub);
