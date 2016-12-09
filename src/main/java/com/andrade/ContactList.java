@@ -13,7 +13,7 @@ import com.vaadin.ui.VerticalLayout;
 
 @UIScope
 @SpringComponent
-class ClientList extends VerticalLayout implements ClientChangeListener {
+class ContactList extends VerticalLayout implements ClientChangeListener {
 	/**
 	 *
 	 */
