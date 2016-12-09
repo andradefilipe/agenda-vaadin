@@ -35,7 +35,7 @@ class ContactForm extends Window {
 		form.setSpacing(true);
 		form.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
 		setContent(form);
-		setHeight("400px");
+		setHeight("300px");
 		setWidth("600px");
 		setModal(true);
 
